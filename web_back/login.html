@@ -67,21 +67,22 @@
             console.log(1)
             $('#msgInfo').text('用户名和密码不能为空')
             $('#myModal').modal('show')
+
+            return;
         }
         //3，发送请求，根据返回给出提示
         user.login(myUserName,myPaseWord,function(res){
             console.log(2)
             if (res.code === 200) {
                 location.href = "./index.html"
-            } else if (res.code === 400) {
-                if (!(myUserName === '' || myPaseWord === ''))
+            } else {
                 $('#msgInfo').text(res.msg)
                 $('#myModal').modal('show')
                 // console.log(res.msg)
             }
         })
        
-        // 无奈
+        // 无奈前两次提交没有保存名字
         // 点击事件结束
     });
 
