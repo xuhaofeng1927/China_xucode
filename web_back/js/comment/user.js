@@ -10,6 +10,15 @@ var user = {
            callback(res)
 
         })
+    },
+    logout :function (callback) {
+        $.post( publicLocal+'admin/logout',function (res) {
+                callback(res)
+                // console.log(res.code);
+                
+                
+            })
+        
     }
     
 }
