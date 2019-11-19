@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/iconfont.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -23,24 +24,69 @@
             <form class="login_form">
                 <i class="iconfont icon-user"></i>
                 <i class="iconfont icon-key"></i>
-                <input type="text" class="input_txt" placeholder="邮箱/手机号">
-                <input type="password" class="input_pass" placeholder="密码">
-                <input  id="login" type="button" class="input_sub" value="登 录">
+                <input type="text" class="input_txt" id="myUserName" placeholder="邮箱/手机号">
+                <input type="password" class="input_pass" id="myPaseWord" placeholder="密码">
+                <input id="btnLogin" type="button" class="input_sub" value="登 录">
             </form>
         </div>
 
-    </div> 
+    </div>
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">友情提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="msgInfo">登陆失败</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 </body>
+<!-- <script src="./js/jquery-1.12.4.min.js"></script> -->
 <script src="./js/jquery-1.12.4.min.js"></script>
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./js/comment/user.js"></script>
 <script>
     // 登录点击事件
-    //1，获取用户信息
-    $('#login').click(function() {
+    $('#btnLogin').click(function () {
+        //1，获取用户信息
+        var myUserName = $('#myUserName').val().trim()
+        var myPaseWord = $('#myPaseWord').val().trim()
+        //2，验证是否为空
+        if (myUserName === '' || myPaseWord === '') {
+            // alert('不能为空')
+            console.log(1)
+            $('#msgInfo').text('用户名和密码不能为空')
+            $('#myModal').modal('show')
+        }
+        //3，发送请求，根据返回给出提示
+        user.login(myUserName,myPaseWord,function(res){
+            console.log(2)
+            if (res.code === 200) {
+                location.href = "./index.html"
+            } else if (res.code === 400) {
+                if (!(myUserName === '' || myPaseWord === ''))
+                $('#msgInfo').text(res.msg)
+                $('#myModal').modal('show')
+                // console.log(res.msg)
+            }
+        })
+       
 
+        // 点击事件结束
     });
-    //2，验证是否为空
-    //3，发送请求，根据返回给出提示
+
+
 </script>
+
 
 </html>
