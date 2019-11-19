@@ -19,8 +19,8 @@
     <div class="sider">
         <a href="#" class="logo"><img src="images/logo02.png" alt="logo"></a>
         <div class="user_info">
-            <img src="images/2.jpg" alt="person">
-            <span>欢迎&nbsp;&nbsp;李思思</span>
+            <img class="com_headpit"src="images/2.jpg" alt="person">
+            <span>欢迎&nbsp;&nbsp;<strong id="admin_name">李思思</strong></span>
             <b>管理员</b>
         </div>
         <div class="menu">
@@ -51,7 +51,7 @@
         </form>
         <div class="user_center_link">
             <a href="user.html" onclick="setMenu(3,0)" target="main_frame">个人中心</a>
-            <img src="images/2.jpg" alt="person">
+            <img  class="com_headpit" src="images/2.jpg" alt="person">
             <a href="javascrip:;" id='exit_logout'><i class="iconfont icon-tuichu"></i> 退出</a>
         </div>
     </div>
@@ -134,6 +134,17 @@
 
     </script>
     <script src="./js/comment/user.js"></script>
+    <script>
+        user.getAdmin(function(res) {
+            console.log(res);
+            if (res.code===200) {
+               $('#admin_name').text(res.data.nickname)
+               $('.com_headpit').prop('src',res.data.user_pic)
+                
+            }
+            
+        })
+    </script>
     <script>
         $('#exit_logout').click(function () {
             if(window.confirm('是否退出')===false) {
