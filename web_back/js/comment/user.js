@@ -1,11 +1,11 @@
 var publicLocal = "http://localhost:8000/"
 var user = {
     login : function (userName,userPassworde,callback) {
-        $.post( publicLocal+'admin/login',//userName
+        $.post( publicLocal+'admin/login',
         {
-            user_name: userName,
-            password: userPassworde
-        },//userPassworde
+            user_name: userName,//userName
+            password: userPassworde//userPassworde
+        },
         function (res) {
            callback(res)
 

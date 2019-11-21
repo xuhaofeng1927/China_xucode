@@ -135,6 +135,7 @@
     </script>
     <script src="./js/comment/user.js"></script>
     <script>
+        //获取用户信息
         user.getAdmin(function(res) {
             console.log(res);
             if (res.code===200) {
@@ -146,6 +147,7 @@
         })
     </script>
     <script>
+        //退出页面
         $('#exit_logout').click(function () {
             if(window.confirm('是否退出')===false) {
                 return;
