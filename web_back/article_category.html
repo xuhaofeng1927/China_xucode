@@ -29,17 +29,7 @@
                     </tr>
                 </thead>
                 <tbody id ="wzinfo">
-                    <tr>
-                        <td>未分类</td>
-                        <td>uncategorized</td>
-                        <td class="text-center">
-                            <a href="javascript:editTr({&quot;id&quot;:&quot;1&quot;,&quot;slug&quot;:&quot;uncategorized&quot;,&quot;name&quot;:&quot;未分类&quot;});"
-                                class="btn btn-info btn-xs">编辑</a>
-                            <a href="javascript:deleteTr( 1 );" class="btn btn-danger btn-xs">删除</a>
-                        </td>
-                    </tr>
-
-                    
+              
                 </tbody>
                 <tfoot>
                     <tr>
@@ -102,6 +92,7 @@
               }
           })      
       </script>
+      <script src="./js/comment/publicsite.js"></script>
       <script src="./js/comment/category.js"></script>
       <script src="./js/template-web.js"></script>
       <script id="temp" type="text/html">
@@ -112,7 +103,7 @@
                 <td class="text-center">
                     <a href="javascript:editTr({&quot;id&quot;:&quot;1&quot;,&quot;slug&quot;:&quot;uncategorized&quot;,&quot;name&quot;:&quot;未分类&quot;});"
                         class="btn btn-info btn-xs">编辑</a>
-                    <a href="javascript:deleteTr( 1 );" class="btn btn-danger btn-xs">删除</a>
+                    <a href="javascript:;" data-id="{{item.id}}"class="btn btn-danger btn-xs del">删除</a>
                 </td>
             </tr>
 
@@ -120,12 +111,38 @@
       </script>
       
       <script>
-            category.getInfo(function (res) {
+          //获取类型信息
+            function getcatInfo() {
+                category.getInfo(function (res) {
                 console.log(res);
                 var htmlStr = template('temp', res)
                 console.log(htmlStr);
                 $("#wzinfo").html(htmlStr)
     
+            })
+
+            }
+            getcatInfo()
+        </script>
+
+        <script>
+            // 点击删除
+            $('#wzinfo').on('click','.del',function(){
+                var id = $(this).attr('data-id')
+                console.log($(this).attr('data-id'));
+                
+                // alert('1')
+                category.delInfo(id,function(res){
+                    console.log(res);
+                    if (res.code===200){ 
+                        getcatInfo()
+                        
+                    }
+
+                    
+                })
+                
+
             })
         </script>
 

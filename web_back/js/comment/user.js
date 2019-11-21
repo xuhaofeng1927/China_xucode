@@ -1,7 +1,7 @@
-var publicLocal = "http://localhost:8000/"
+
 var user = {
     login : function (userName,userPassworde,callback) {
-        $.post( publicLocal+'admin/login',
+        $.post( APIURS.user_login,
         {
             user_name: userName,//userName
             password: userPassworde//userPassworde
@@ -22,14 +22,14 @@ var user = {
         // }
     },
     logout :function (callback) {
-        $.post( publicLocal+'admin/logout',function (res) {
+        $.post( APIURS.user_logout,function (res) {
                 callback(res)
                 // console.log(res.code);  
             })
         
     },
     getAdmin :function (callback) {
-        $.get(publicLocal+'admin/getuser',function (res){
+        $.get(APIURS.user_getAdmin,function (res){
             callback(res)
         })
     }
