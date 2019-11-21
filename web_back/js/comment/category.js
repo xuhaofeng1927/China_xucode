@@ -8,5 +8,10 @@ var category = {
         $.post(APIURS.category_delInfo, {id:id},function (res) {
             callback(res)
         })
-    }
+    },
+    addInfo: function (name,slug,callback) {
+        $.post(APIURS.category_addInfo, {name:name,slug:slug},function (res) {
+            callback(res)
+        })
+    },
 }

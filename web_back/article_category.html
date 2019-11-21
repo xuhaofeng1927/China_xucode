@@ -2,100 +2,97 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>文章列表</title>
-    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/iconfont.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="js/bootstrap/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文章列表</title>
+  <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/iconfont.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="js/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="common_title">
-            文章类别管理
-        </div>
-        <div class="container-fluid common_con">
-            <table class="table table-striped table-bordered table-hover mp20 category_table">
-                <thead>
-                    <tr>
-                        <th>名称</th>
-                        <th>Slug</th>
-                        <th class="text-center" width="100">操作</th>
-                    </tr>
-                </thead>
-                <tbody id ="wzinfo">
-              
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3" class="text-center">
-                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addModal">新增分类</a>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+  <div class="container-fluid">
+    <div class="common_title">
+      文章类别管理
     </div>
+    <div class="container-fluid common_con">
+      <table class="table table-striped table-bordered table-hover mp20 category_table">
+        <thead>
+          <tr>
+            <th>名称</th>
+            <th>Slug</th>
+            <th class="text-center" width="100">操作</th>
+          </tr>
+        </thead>
+        <tbody id="wzinfo">
 
-    <div class="modal fade" id="addModal" >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-              <h4 class="modal-title">新增分类</h4>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" class="text-center">
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addModal">新增分类</a>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+          <h4 class="modal-title">新增分类</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="control-label">分类名称:</label>
+              <input type="text" class="form-control" id="recipient-name">
             </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="recipient-name" class="control-label">分类名称:</label>
-                  <input type="text" class="form-control" id="recipient-name">
-                </div>
-                <div class="form-group">
-                  <label for="message-text" class="control-label">分类别名:</label>
-                  <input type="text" class="form-control" id="recipient-name">
-                </div>
-              </form>
+            <div class="form-group">
+              <label for="message-text" class="control-label">分类别名:</label>
+              <input type="text" class="form-control" id="recipient-othername">
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" id="model_shutoff">关闭</button>
-              <button type="button" class="btn btn-primary" id="model_add">新增</button>
-            </div>
-          </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="model_shutoff">关闭</button>
+          <button type="button" class="btn btn-primary" id="model_add">新增</button>
         </div>
       </div>
+    </div>
+  </div>
 
-      <script>
-          $('#addModal').modal({
-            show:false,
-            backdrop:false
-          });
+  <script>
+    $('#addModal').modal({
+      show: false,
+      backdrop: false
+    });
 
-          $('#model_shutoff').click(function(){
-            alert('shutoff');
-            $('#addModal').modal('hide');
-          });
+    $('#model_shutoff').click(function () {
+      // alert('shutoff');
+      $('#addModal').modal('hide');
+    });
 
-          $('#model_add').click(function(){
-            alert('add');
-            $('#addModal').modal('hide');
-          });
 
-          $('.category_table').delegate('a','click',function(){
-              if($(this).hasClass('btn-info')){
-                $('#addModal .modal-title').html('修改分类名称');
-                $('#addModal').modal('show');
-              }
-          })      
-      </script>
-      <script src="./js/comment/publicsite.js"></script>
-      <script src="./js/comment/category.js"></script>
-      <script src="./js/template-web.js"></script>
-      <script id="temp" type="text/html">
+
+    $('.category_table').delegate('a', 'click', function () {
+      if ($(this).hasClass('btn-info')) {
+        $('#addModal .modal-title').html('修改分类名称');
+        $('#addModal').modal('show');
+      }
+    })      
+  </script>
+  <script src="./js/comment/publicsite.js"></script>
+  <script src="./js/comment/category.js"></script>
+  <script src="./js/template-web.js"></script>
+  <script id="temp" type="text/html">
          {{each data item}}
          <tr>
                 <td>{{item.name}}</td>
@@ -109,42 +106,79 @@
 
          {{/each}}
       </script>
-      
-      <script>
-          //获取类型信息
-            function getcatInfo() {
-                category.getInfo(function (res) {
-                console.log(res);
-                var htmlStr = template('temp', res)
-                console.log(htmlStr);
-                $("#wzinfo").html(htmlStr)
+
+  <script>
+    //获取类型信息
+    function getcatInfo() {
+      category.getInfo(function (res) {
+        console.log(res);
+        var htmlStr = template('temp', res)
+        console.log(htmlStr);
+        $("#wzinfo").html(htmlStr)
+
+      })
+
+    }
+    getcatInfo()
+  </script>
+  <script>
+    //点击添加
+    $('#model_add').click(function () {
+      //获取用户填入的信息
     
-            })
+      var rec_name = $('#recipient-name').val().trim();
+      var rec_othername = $('#recipient-othername').val().trim();
+      $('#recipient-name').val('');
+      $('#recipient-othername').val('');
+      if (rec_name === '' || rec_othername === '') {
+        alert('内容不能为空');
+        return;
+      }
 
+      console.log(rec_name, rec_othername);
+
+      //调用数据，发请求
+      category.addInfo(rec_name, rec_othername, function (res) {
+        console.log(res);
+        if (res.code === 400) {
+          alert(res.msg);
+
+        } else if (res.code === 200) {
+          alert(res.msg);
+          $('#addModal').modal('hide');
+          getcatInfo()
+
+          return;
+        }
+      })
+      // alert('add');
+
+    });
+  </script>
+
+  <script>
+    // 点击删除
+    $('#wzinfo').on('click', '.del', function () {
+      if(confirm('是否要删除？') === false ){
+                return;
             }
-            getcatInfo()
-        </script>
+      var id = $(this).attr('data-id')
+      console.log($(this).attr('data-id'));
 
-        <script>
-            // 点击删除
-            $('#wzinfo').on('click','.del',function(){
-                var id = $(this).attr('data-id')
-                console.log($(this).attr('data-id'));
-                
-                // alert('1')
-                category.delInfo(id,function(res){
-                    console.log(res);
-                    if (res.code===200){ 
-                        getcatInfo()
-                        
-                    }
+      // alert('1')
+      category.delInfo(id, function (res) {
+        console.log(res);
+        if (res.code === 200) {
+          getcatInfo()
 
-                    
-                })
-                
+        }
 
-            })
-        </script>
+
+      })
+
+
+    })
+  </script>
 
 </body>
 

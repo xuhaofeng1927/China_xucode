@@ -5,6 +5,7 @@ var APIURS = {
     user_getAdmin: publicLocal+'admin/getuser',
 
     category_getInfo : publicLocal+'admin/category_search',
-    category_delInfo : publicLocal+'admin/category_delete'
+    category_delInfo : publicLocal+'admin/category_delete',
+    category_addInfo : publicLocal+'admin/category_add'
 
 }
