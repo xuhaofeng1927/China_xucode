@@ -6,6 +6,7 @@ var APIURS = {
 
     category_getInfo : publicLocal+'admin/category_search',
     category_delInfo : publicLocal+'admin/category_delete',
-    category_addInfo : publicLocal+'admin/category_add'
+    category_addInfo : publicLocal+'admin/category_add',
+    category_alterInfo : publicLocal+'admin/category_edit'
 
 }

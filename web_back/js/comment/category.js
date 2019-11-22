@@ -14,4 +14,9 @@ var category = {
             callback(res)
         })
     },
+    alterInfo: function (id,name,slug,callback) {
+        $.post(APIURS.category_alterInfo, {id:id,name:name,slug:slug},function (res) {
+            callback(res)
+        })
+    }
 }
